@@ -12,6 +12,18 @@ Selling a low-cost, low-power, small (2-6 port) gigabit router that's easy to ha
 - operations / legal
 - [licensing](./licensing.md)
 
+## Questions
+* Do we want to make a router or switch?
+* What is Router?
+* What is Switch?
+* What do *we* want it to do?
+* Who do we think this is for? Why do they want it? 
+* Name?
+  * Open Switch (lol, like a electronic switch?)
+  * Closed Switch (lol, irony here since we're open?)
+  * Mycelium (the small fungi filaments that connect nutrient pathways between trees and fungi)
+  * \<moar ideas pls?\>
+
 # software
 
 Bare metal vs. full linux distro ? 
@@ -28,7 +40,7 @@ testing: RTL simulator vs virtualized ? Possible to mix the two?
 
 seems important: 
 - hardware/software alignment (low effort, up-to-date)
-- debuggability (determinism, waveform tracing)
+- debugability (determinism, waveform tracing)
 - validating complex interactions (e.g. edge-driven UART interrupts vs. level-driven)
 - speed of feedback
 
