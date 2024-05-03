@@ -11,3 +11,5 @@ rough guarantees:
 - commercialization without enshittification (i.e. guaranteed interoperability?)
 
 Recursively? Or just for our project(s)?
+
+**Of note**: Justine Haupt's Sky's Edge's open source license: https://www.skysedge.com/opensource/index.html
