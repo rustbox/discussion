@@ -12,6 +12,8 @@ Selling a low-cost, low-power, small (2-6 port) gigabit router that's easy to ha
 - operations / legal
 - [licensing](./licensing.md)
 
+Obviously it should spit out UART somewhere so we can plug Vgaterm into it.
+
 ## Questions
 * Do we want to make a router or switch?
 * What is Router?
