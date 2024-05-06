@@ -1,6 +1,7 @@
 # Projects and Orgs that Inspire Rustbox
 
 * Oxide
+* Adafruit
 * Sparkfun
 * [Scenic Routes](https://www.scenicroutessf.com/)
 * https://ploopy.co/about-us/
