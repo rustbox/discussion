@@ -13,4 +13,6 @@
 * [DevTerm](https://www.clockworkpi.com/devterm) and ClockworkPi
 * [Watchy](https://watchy.sqfmi.com/)
 * [Open Pick and Place by Opulo](https://www.youtube.com/@stephen_hawes)
-* open collective 
+* open collective
+* Servethehome
+* TuringPi
