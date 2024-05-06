@@ -3,6 +3,7 @@
 * Oxide
 * Adafruit
 * Sparkfun
+* Osh Park
 * [Scenic Routes](https://www.scenicroutessf.com/)
 * https://ploopy.co/about-us/
 * [Justine Haupt's Rotary Cell Phone](https://justine-haupt.com/rotarycellphone/)
