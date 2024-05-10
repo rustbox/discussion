@@ -14,6 +14,33 @@ Selling a low-cost, low-power, small (2-6 port) gigabit router that's easy to ha
 
 Obviously it should spit out UART somewhere so we can plug Vgaterm into it.
 
+## Design Goals
+
+All of these are in direct tension with each other:
+
+- Low cost (~$30)
+- Low power (single-digit watts?)
+- Gigabit line rate (802.3ac)
+
+And some broader tensions that have impacts here:
+
+- Security and experimentation
+- Modularity and reliability
+- Instrumentation and performance
+
+
+### Comparison
+
+with https://store.ui.com/us/en/pro/category/wired-edge-max-routing/products/er-x 
+
+
+### Gigabit Ethernet
+
+What is the minimum power (in watts) for a gigabit-capable device to route a signal?
+
+What is the minimum clockspeed? Per https://en.wikipedia.org/wiki/Gigabit_Ethernet#Copper it's a lot less than I thought: 62.5 MHz (1000 Gb / 4 lanes / 2 bits/clk / 2 ??? )
+
+
 ## Questions
 * Do we want to make a router or switch?
 * What is Router?
@@ -25,6 +52,7 @@ Obviously it should spit out UART somewhere so we can plug Vgaterm into it.
   * Closed Switch (lol, irony here since we're open?)
   * Mycelium (the small fungi filaments that connect nutrient pathways between trees and fungi)
   * \<moar ideas pls?\>
+
 
 # software
 
@@ -71,6 +99,12 @@ https://www.xilinx.com/products/boards-and-kits/arty.html ?
 Xilinx Spartan 7? (in the logic analyzer) 
 
 ethernet PHY on-FPGA or off-FPGA?
+
+This looks promising: https://www.microchip.com/en-us/products/fpgas-and-plds/fpgas/igloo-2-fpgas
+
+> IGLOO® 2 Flash FPGA devices are ideal for general-purpose functions such as Gigabit Ethernet ...
+
+And they start at ~$14/chip: https://www.mouser.com/c/?marcom=134980455&sort=pricing
 
 # compliance
 
