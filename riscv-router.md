@@ -31,7 +31,38 @@ And some broader tensions that have impacts here:
 
 ### Comparison
 
-with https://store.ui.com/us/en/pro/category/wired-edge-max-routing/products/er-x 
+<table>
+ <th>
+   <td>Design Goal</td>
+   <td><a href="https://store.ui.com/us/en/pro/category/wired-edge-max-routing/products/er-x">EdgeRouter X</a></td>
+   <td><a href="https://store.ui.com/us/en/pro/category/all-wired/products/er-x-sfp">EdgeRouter X-SFP</a></td>
+</th>
+ <tr><td>Price</td><td>$40</td><td>$60</td><td>$100</td></tr>
+ <tr><td>Power (max)</td><td>5W</td><td colspan=2>5W</td></tr>
+ <tr><td>Power (avg)</td><td>??</td><td colspan=2><5W ?</td></tr>
+ <tr><td>ISA</td><td>RISC-V</td><td colspan=2>MIPS</td></tr>
+ <tr><td>Networking</td><td>(2-4) 10/100/1000 RJ45 ports</td><td>(3) 10/100/1000 RJ45 ports<br>(1) 10/100/1000 RJ45 port (Data/PoE input)<br>(1) 10/100/1000 RJ45 port (Data/PoE passthrough)</td><td>(5) 10/100/1000 RJ45 ports<br>(1) 100/1000 SFP port </td></tr>
+ <tr><td>PoE Output</td><td>??</td><td>N/A</td><td>Passive 12W (24V)</td></tr>
+ <tr><td>Software</td><td>??</td><td colspan=2>Linux (Vyatta)</td></tr>
+ <tr><td>Other Hardware</td><td>??</td><td colspan=2>
+     <table>
+      <tr><td>Processor</td><td>Dual-core 880 MHz, MIPS1004Kc</td></tr>
+      <tr><td>Memory</td><td>256 MB DDR3 RAM</td></tr>
+      <tr><td>Storage</td><td>256 MB NAND</td></tr>
+     </table>
+    </td>
+ 	
+ <tr><td>Ambient operating temperature</td><td>At least +10 to 40°C</td><td colspan=2>-10 to 45° C (14 to 113° F)</td></tr>
+ <tr><td>Ambient operating humidity</td><td>??</td><td colspan=2>10 to 90% noncondensing</td></tr>
+ <tr><td>Certifications</td><td>??</td><td colspan=2>CE, FCC, IC</td></tr>
+
+ <!--
+ <tr><td>TITLE</td><td>GOAL</td><td colspan=2>UBNT</td></tr>
+ -->
+
+ 
+</table>
+
 
 
 ### Gigabit Ethernet
