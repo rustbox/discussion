@@ -28,14 +28,30 @@ And some broader tensions that have impacts here:
 - Modularity and reliability
 - Instrumentation and performance
 
+## Benefits
+
+Networking hardware is a core primitive of making useful share-able services. Learning more about these pieces and how they fit together is attractive for our goals. It's also a natural starting point/lynchpin for "home lab" enthusiasts, since it's the intemediation between all the other devices. That's a low volume market, but one with higher quality feedback as people self-select into their interest.
+
+As a target, building a router equips us to practice skills like RTL modeling & FPGA development that seem broadly applicable. There's many potential side-avenues to explore & find an adjacent niche (e.g. FPGA development accelerator boards), with plenty of seemingly low-hanging fruit. It's also got a clear success criteria & natural way for us to self-validate: it solves a problem we actually have.
+
+Starting at the network edge keeps performance requirements relatively low: while it's not unreasonable for people to want 10gig, 25gig or even 100gig performance "inside" their network, almost no small networks have an internet connection faster than gigabit.
+
+## Risks
+
+The small-scale router space is somewhat crowded; most of the entrants are highly locked down, which we know doesn't provide either reliability or security at the limit. But the difference in quality between a device that experiences a (very loosely defined) "fault" every 10,000 hours vs every 1 million hours is _very_ hard to percieve at the point of sale. Instead, feature & price sensitivity probably dominate (in what rough proportion with reputation? extensibility?). In other words, it's possible I (Seth) am the only person in the world who cares about having a router that is as open as possible, modular & upgradable, and still affordable/low power.
+
+There's also a _long_ list of "things people expect a network to do," with very little in the way of coherent overlap (i.e. there's a very strange topology of "what is possible" vs. "what is easy"; many roads lead _near_ the same places, but not to them). It's also historically a domain occupied by a small number of experts, and held at "arm's length" as much as possible. This defensivenes is understandable given the abysmally poor quality of feedback when experimenting with the system, but it's also a collective property that may be hard to overcome in a product (i.e. every device on the network shares the same unhelpful "internet test" button that usually provides almost no value).
+
 
 ### Comparison
 
 <table>
  <th>
    <td>Design Goal</td>
+   <!-- <td><a href="...">FPGA</a></td>-->
    <td><a href="https://store.ui.com/us/en/pro/category/wired-edge-max-routing/products/er-x">EdgeRouter X</a></td>
    <td><a href="https://store.ui.com/us/en/pro/category/all-wired/products/er-x-sfp">EdgeRouter X-SFP</a></td>
+ <!-- <td><a href="https://mikrotik.com/product/hex_s">Hex S</a></td>-->
 </th>
  <tr><td>Price</td><td>$40</td><td>$60</td><td>$100</td></tr>
  <tr><td>Power (max)</td><td>5W</td><td colspan=2>5W</td></tr>
@@ -73,11 +89,11 @@ What is the minimum clockspeed? Per https://en.wikipedia.org/wiki/Gigabit_Ethern
 
 
 ## Questions
+
 * Do we want to make a router or switch?
 * What is Router?
 * What is Switch?
-* What do *we* want it to do?
-* Who do we think this is for? Why do they want it? 
+* What do we want it to do?
 * Name?
   * Open Switch (lol, like a electronic switch?)
   * Closed Switch (lol, irony here since we're open?)
