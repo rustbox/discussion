@@ -159,7 +159,44 @@ How do we measure things at 1 gigabit?
 
 # part selection / pricing
 
-## fpgas
+Common designs seem to include (up to) two "main" parts:
+
+* Gigabit-capable Ethernet PHY IC Transceiver
+* Controller SoC 
+
+With required auxiliary/supporting bits (not counting external resistors/capacitors):
+
+* Power (tbd)
+* Connectors (RJ-45)
+* "Magnetics" (transformer required by the PHY IC; possibly integrated into the connector)
+
+And lots of optional components:
+
+* Cooling (although, for <1W , even a heatsink is probably unnecessary)
+* Case
+* DC power source(s)
+* LEDs/indicators
+
+
+## Transceivers
+
+[Marvell "Alaska" 88E1543] [^whence-marvell-88E1543]: 4-port, moderate power (≤280mW), but expensive ($17; volume discounts up to ~10% [$15.50]). QFP package, which is familiar.
+
+[MaxLinear GPY111] [^whence-mouser-ethernet-ics]: 4-port, higher power (maybe? ≤460mW), cost effective ($3.50; volume discounts up to ~50% [$1.62]). VQFN package. Excellent datasheet.
+
+[MaxLinear GSW141] [^whence-mouser-ethernet-ics]: Fully featured "switch" IC, 4-port (+ 3 special ports), absolute power hog (≤924mW), cost effective ($5.62; volume discounts up to ~50% [$2.83]). MRQFN package (impossible to hand-solder).
+
+[Marvell "Alaska" 88E1543]: https://www.mouser.com/ProductDetail/Marvell/88E1543-A1-LKJ2C000?qs=vdi0iO8H4N1tQJodORiAVg%3D%3D
+[MaxLinear GPY111]: https://www.mouser.com/ProductDetail/MaxLinear/GPY111?qs=DRkmTr78QAS61OMQ%2FuuMhw%3D%3D
+[MaxLinear GSW141]: https://www.mouser.com/ProductDetail/MaxLinear/GSW141A3MC?qs=XAiT9M5g4x%2F91%2F1YTEsSCA%3D%3D
+
+[^whence-marvell-88E1543]: via the [Igloo 2 eval kit user guide](https://www.microchip.com/en-us/development-tool/m2gl-eval-kit#Documentation)§2.5 "Board Key Components", that board ships with the Marvell 88E1340S (which was hard to find), so I went looking for "closest available" and shortly thereafter ended up with the 88E1543.
+[^whence-mouser-ethernet-ics]: via [Mouser search][mouser-ethernet-ics-with-filters] in [Ethernet ICs category](https://www.mouser.com/c/semiconductors/communication-networking-ics/ethernet-ics/)
+
+[mouser-ethernet-ics-with-filters]: https://www.mouser.com/c/semiconductors/communication-networking-ics/ethernet-ics/?data%20rate=10%20Mb%2Fs%2C%20100%20Mb%2Fs%2C%201%20Gb%2Fs~~10%20Mb%2Fs%2C%20100%20Mb%2Fs%2C%201%20Gb%2Fs%2C%2010%20Gb%2Fs%7C~10%20Mb%2Fs%2C%20100%20Mb%2Fs%2C%201%20Gb%2Fs%2C%202.5%20Gb%2Fs~~10%20Mb%2Fs%2C%20100%20Mb%2Fs%2C%201%20Gb%2Fs%2C%202.5%20Gb%2Fs%2C%205%20Gb%2Fs%7C~100%20Mb%2Fs%2C%201%20Gb%2Fs%2C%2010%20Gb%2Fs~~100%20Mb%2Fs%2C%201%20Gb%2Fs%2C%202.5%20Gb%2Fs%2C%205%20Gb%2Fs%2C%2010%20Gb%2Fs%7C~1%20Gb%2Fs~~1%20Gb%2Fs%20to%201.3%20Gb%2Fs%7C~1%20Gb%2Fs%2C%2010%20Gb%2Fs~~1%20Gb%2Fs%2C%2010%20Gb%2Fs%2C%2040%20Gb%2Fs%7C~1%20Gb%2Fs%2C%202.5%20Gb%2Fs%2C%2010%20Gb%2Fs%7C~1%20Gb%2Fs%2C%202.5%20Gb%2Fs%2C%205%20Gb%2Fs%2C%2010%20Gb%2Fs~~1%20Gb%2Fs%2C%205%20Gb%2Fs%2C%2010%20Gb%2Fs%7C~1.25%20Gb%2Fs&number%20of%20transceivers=2%20Transceiver~~16%20Transceiver&rp=semiconductors%2Fcommunication-networking-ics%2Fethernet-ics%7C~Number%20of%20Transceivers%7C~Data%20Rate&sort=pricing
+
+
+## Controller SoC fpgas
 
 https://www.xilinx.com/products/boards-and-kits/arty.html ?
 
@@ -187,6 +224,12 @@ It seems like there's a few layers to try teasing apart here:
 - so-called "IP" availability: there's a somewhat eclectic mix of "parts" available to "plug in" to a design.
   - it sure would be nice to have an index where we could say, e.g. "ETH PHY 1000" and get a list of gigabit-capable "core"s (not the CPU kind of "core"). Maybe someone should make that (us?).
   - To be useful, it'd probably also need to be further filterable by "integration details," maybe HDL? "inward" facing protocols (SPI; TileLink; that ARM interlink protocol thing; etc.)?
+
+## Connectors
+
+https://www.mouser.com/c/connectors/modular-connectors-ethernet-connectors/
+
+With integrated magnetics + LEDs, might be ~[$8/port](https://www.mouser.com/ProductDetail/Taoglas/TMJY001DYDZ5NL?qs=1Kr7Jg1SGW8e3hAY3JZFvA%3D%3D)? More research needed.
 
 # compliance
 
