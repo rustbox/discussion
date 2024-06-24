@@ -106,6 +106,51 @@ So ignoring transmission line effects and switching frequencies—both of which 
 What is the minimum clockspeed? Per https://en.wikipedia.org/wiki/Gigabit_Ethernet#Copper it's a lot less than I thought: 62.5 MHz (1000 Gb / 4 lanes / 2 bits/clk / 2 ??? )
 
 
+## Rough Project Plan
+
+### Milestone: Ping-able simulation 
+
+Topics: RTL modeling, simulation acceleration, virtualization tech, bare-metal programming, limited amount of networking concepts
+
+Validation: Ping a simulated SoC
+
+### Milestone: Ping-able FPGA 
+
+Topics: FPGA comparison/selection, programming software/hardware, impact of flexibility tradeoffs in design space; on-board debugging & development; Ethernet PHY details
+
+Simple validation: do I see successful pings?
+Complex validation: ping flood with packets of different sizes and check timing/drops/errors (all already built in to the ping tool)
+
+### Milestone: Minimal smart Ethernet switch
+
+The “remember MACs/only broadcast when necessary“ algorithm. 
+
+Topics: expands on networking, explores design space around software vs hardware for networking primitives; starts to get at validation/testing [it ought to work more than once], power efficiency)
+
+Notes:
+- Implies implementing a reprogrammable routing table, proper ARP/NDP and fleshing out the ICMP implementation; shouldn’t require any IP-level support beyond that
+- This is also probably when we have to start thinking about a custom board; unless we find an FPGA dev board with at least two Ethernet jacks on it, or want to implement one of those other Ethernet-over-X (usb?) protocols; it would be hard to get a realistic line rate test working with that though
+- *Product*: at this point we’ll have implemented an “unmanaged” switch. If we want to sell it, we can look at  manufacturing/compliance/fulfillment here; if we want to stop/pivot, I can put this under my desk, replace one of my two devices, and declare succes
+
+### Next iterations?
+
+1. adding static (permanent) routes to the route table (explores control plane vs. data plane; long-term vs. ephemeral configuration interface)
+2. minimal home gigabit edge routing/"WAN router" (practicing the above to implement a minimal replacement for my existing OTP-facing router: that's DHCP (client + server), 802.1Q tagging, PPPoE, & IPv4 NAT)
+  	- There's a couple ways to break this down: DHCP-first or "wrapper"-first; either way the new device would handle every internet-facing packet, just at different times
+  	- Putting DHCP first lets me move everything over to the new device right away, and move the encapsulation protocols over one-at-a-time; that picture'd look like: OTP (ISP) <-> old router <-> new router <-> rest of network
+  	- Putting either 802.1Q or PPPoE first means I'd leave the old gear in charge of that config, it just forwards the packets unadorned and then we'd wrap them in their various layers before sending them along; in pictures, that's OTP (ISP) <-> new router <-> old router <-> rest of network . The one wrinkle here is that the PPPoE gets its configuration from the ISP via DHCP (as a client), so it'd still be somewhat DHCP-first (but the client side is way easier)
+	  - Either way, I think I'd want to do NAT last; ideally, not at all, but I don't see any way around it.
+	  - Somewhere around here we'd probably be able to start finding other folks interested in an (early) alpha; ideally that'd help us guide broader priorities.
+3. get to feature-parity with my existing router; the banner feature here is mss-clamping, and the biggest fish is probably the long list of firewall features.
+	  - This list comes from my [config](https://gist.github.com/sethp/9ef1c952b188c232bbe73faeed9014ac); there's also potentially "active by default" things that Are Yet To Be Discovered (though vyos is pretty good about "what you see is what you get")
+	 - Aside: I really want the thing to be able to yell loudly (ICMP "packet too big!") when the config gets messed up upstream; maybe the other peers won't handle that well, but it astounds me that in 2024 if I set my MTU too high I get sporadically "stuck" connections as the remote router simply drops my over-large packets without so much as a how'd'ya'do. I don't know if that'd remove the need for mss-clamping, but it'd be worth an experiment.
+	 - Optionally: DNS (server)
+ 	- Optionally: NTP
+ 	- Optionally: PoE
+4. eat the rest of my existing networking apple one bite at a time?
+	 - PoE
+	 - Expected: "allow only outbound" firewall
+	
 ## Questions
 
 * Do we want to make a router or switch?
