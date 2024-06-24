@@ -108,6 +108,35 @@ What is the minimum clockspeed? Per https://en.wikipedia.org/wiki/Gigabit_Ethern
 
 ## Rough Project Plan
 
+```mermaid
+graph TD;
+    A-->B;
+    B-->C;
+    C-->D;
+    D-->E;
+    D-->F;
+    D-->G;
+    E-->H;
+    F-->H;
+    G-->H;
+    
+%% already done
+%% TODO: style it? http://mermaid.js.org/syntax/flowchart.html#styling-a-node
+A["Ping-able sim"];
+B["Ping-able FPGA"];
+
+%% TODO: group up the other protocols into here?
+%% using.... subgraphs http://mermaid.js.org/syntax/flowchart.html#subgraphs ?
+C["Ethernet switching"]; 
+D["(static) IP Routing"];
+
+E["DHCP(v4)"];
+F["PPPoE"];
+G["802.1Q"];
+
+H["..."];
+```
+
 ### Milestone: Ping-able simulation 
 
 Topics: RTL modeling, simulation acceleration, virtualization tech, bare-metal programming, limited amount of networking concepts
