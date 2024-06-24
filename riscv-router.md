@@ -98,6 +98,10 @@ There's also a _long_ list of "things people expect a network to do," with very 
 ### Gigabit Ethernet
 
 What is the minimum power (in watts) for a gigabit-capable device to route a signal?
+-> https://en.wikipedia.org/wiki/Category_5_cable#Characteristics lists the characteristic impedance (at 100 MHz) as 100Ω 
+-> https://en.wikipedia.org/wiki/Ethernet_physical_layer lists the voltage levels as ±2.5V
+
+So ignoring transmission line effects and switching frequencies—both of which seem significant here, since most cables are relatively long and the switching seems relatively far from a pure sine wave—and using `P_avg = (V_rms)^2 / R` we get ~ 31 mW per line, or 248 mW per 4-pair (8-line) link. So for a 4-port switch, we'd expect almost exactly 1W for the physical layer (is this an over- or under-estimate?).
 
 What is the minimum clockspeed? Per https://en.wikipedia.org/wiki/Gigabit_Ethernet#Copper it's a lot less than I thought: 62.5 MHz (1000 Gb / 4 lanes / 2 bits/clk / 2 ??? )
 
@@ -118,6 +122,9 @@ What is the minimum clockspeed? Per https://en.wikipedia.org/wiki/Gigabit_Ethern
 
 - https://zipcpu.com/blog/2023/11/25/eth10g.html
 - https://www.chili-chips.xyz/open-cologne/ (note the paring of a Raspberry Pi CM4 "IO board" with a Lattice/Cologne FPGA)
+- https://baturin.org/docs/iproute2/
+- https://router7.org/
+- and the venerable https://en.wikipedia.org/wiki/List_of_network_protocols_(OSI_model)
 
 # software
 
