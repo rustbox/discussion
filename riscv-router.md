@@ -198,7 +198,9 @@ Notes:
 - https://www.chili-chips.xyz/open-cologne/ (note the paring of a Raspberry Pi CM4 "IO board" with a Lattice/Cologne FPGA)
 - https://baturin.org/docs/iproute2/
 - https://router7.org/
-- and the venerable https://en.wikipedia.org/wiki/List_of_network_protocols_(OSI_model)
+- https://resources.altium.com/p/gigabit-ethernet-101-basics-implementation
+- https://www.analog.com/media/en/technical-documentation/application-notes/EE-269.pdf
+- and the venerable (if flawed) https://en.wikipedia.org/wiki/List_of_network_protocols_(OSI_model)
 
 # software
 
